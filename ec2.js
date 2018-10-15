@@ -1,0 +1,1 @@
+document.getElementById=("id_bussiness_version").innerHTML = "ID Bussiness Version";
