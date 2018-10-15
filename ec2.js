@@ -10,7 +10,7 @@ function rezolva()
 
 	//rezolvare
 	var delta=b^2-4*a*c;
-	var x1,x2,x1_im,x2_re,x2_im,x1_re;
+	var x1,x2,x1_im,x1_re,x2_re,x2_im;
 	if(delta>=0){
 		x1= (-b + Math.sqrt(delta))/(2*a);
 		x2= (-b - Math.sqrt(delta))/(2*a);
