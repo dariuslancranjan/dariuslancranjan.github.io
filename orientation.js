@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic version: 2018.10.29.1";
+document.getElementById("id_logic_version").innerHTML = "Logic version: 2018.10.29.2";
 
 window.addEventListener("deviceorientation", on_device_orientation);
 
@@ -13,6 +13,8 @@ function on_device_orientation(e)
 
 var canvas = document.getElementById("id_canvas");
 var context = canvas.getContext("2d");
+
+context.clearRect(0,0,canvas.width,canvas.height);
 
 context.beginPath();
 context.arc(canvas.height/2 + e.gamma/90 * (canvas.width/2-R),
