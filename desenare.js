@@ -22,7 +22,7 @@ function start()
 	document.getElementById("id_stop_button").disabled=false;
 	
 	
-	var my_worker = new Worker("calcul_prime.js");
+	var my_worker = new Worker("calcul_prim.js");
 
 	my_worker.onmessage = function(){
 		
