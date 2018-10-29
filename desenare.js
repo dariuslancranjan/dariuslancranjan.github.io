@@ -4,6 +4,10 @@ document.getElementById("id_stop_button").addEventListener("click", stop);
 //----------------------
 document.getElementById("id_start_button").disabled=false;
 document.getElementById("id_stop_button").disabled=true;
+
+var unghi = 0 {valoare:0};
+var my_worker = null;
+
 function deseneaza_cerc(context,w,h,unghi)
 {   context.clearRect(0,0,w,h);
 	context.beginPath();
@@ -21,15 +25,20 @@ function start()
 	document.getElementById("id_start_button").disabled=true;
 	document.getElementById("id_stop_button").disabled=false;
 	
+	if(my_worker == null){
+		
 	
 	my_worker = new Worker("calcul_prim.js");
 
 	my_worker.onmessage = function(){
 		
 		document.getElementById("id_prime").innerHTML = e.data;
-		
+	}	
 		
 	}
+	
+	else
+		my_worker.postMessage("start");
 	
      id_timer=setInterval(deseneaza_cerc,10,context,canvas.width,canvas.height,unghi);
 	 
