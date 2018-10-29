@@ -15,4 +15,3 @@ for(var i = 1e9; i < ie10; i ++)
 		postMessage(i);
 
 postMessage("gata");
-]
