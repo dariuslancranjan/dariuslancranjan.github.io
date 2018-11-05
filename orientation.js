@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic version: 2018.10.29.2";
+document.getElementById("id_logic_version").innerHTML = "Logic version: 2018.10.29.5";
 
 window.addEventListener("deviceorientation", on_device_orientation);
 
@@ -28,9 +28,9 @@ context.stroke();
 
 function on_device_motion(e)
 {
-	document.getElementById("id_acc_z").innerHTML = e.accelerationIncludingGravity.z;
-	document.getElementById("id_acc_x").innerHTML = e.accelerationIncludingGravity.x;
-	document.getElementById("id_acc_y").innerHTML = e.accelerationIncludingGravity.y;
+	document.getElementById("id_acc_z").innerHTML = Math.round(acc_z*100)/100;
+	document.getElementById("id_acc_x").innerHTML = Math.round(acc_x*100)/100;
+	document.getElementById("id_acc_y").innerHTML = Math.round(acc_y*100)/100;
 	
 	
 	
