@@ -1,0 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp2
+{
+    public partial class Form1 : Form
+    {
+
+        char transformare, glisor;
+        float p, v, t;
+
+        private void calcule()
+        {
+            switch(transformare)
+            {
+                case 'p':
+                    if (glisor == 't') v = (float)trackBar_Temperatura.Value / (float)trackBar_Presiune.Value;
+                    else if (glisor == 'v') t = (float)trackBar_Presiune.Value * (float)trackBar_Volum.Value;
+                    break;
+
+                case 'v':
+                    if (glisor == 'p') t = (float)trackBar_Presiune.Value * (float)trackBar_Volum.Value;
+                    else if (glisor == 't') p = (float)trackBar_Temperatura.Value / (float)trackBar_Volum.Value;
+                    break;
+
+                case 't':
+                    if(glisor == 'p') v = (float)trackBar_Temperatura.Value / (float)trackBar_Presiune.Value;
+                    else if(glisor == 'v') p = (float)trackBar_Temperatura.Value / (float)trackBar_Volum.Value;
+                    break;
+            }
+
+            textBox_Presiune.Text = p.ToString();
+            textBox_Volum.Text = v.ToString();
+            textBox_Temperatura.Text = t.ToString();
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void radioButton_Presiune_CheckedChanged(object sender, EventArgs e)
+        {
+            trackBar_Presiune.Enabled = false;
+            trackBar_Temperatura.Enabled = true;
+            trackBar_Volum.Enabled = true;
+
+            transformare = 'p';
+        }
+
+        private void radioButton_Volum_CheckedChanged(object sender, EventArgs e)
+        {
+            trackBar_Presiune.Enabled = true;
+            trackBar_Temperatura.Enabled = true;
+            trackBar_Volum.Enabled = false;
+
+            transformare = 'v';
+        }
+
+        private void radioButton_Temperatura_CheckedChanged(object sender, EventArgs e)
+        {
+            trackBar_Presiune.Enabled = true;
+            trackBar_Temperatura.Enabled = false;
+            trackBar_Volum.Enabled = true;
+
+            transformare = 't';
+        }
+
+        private void trackBar_Presiune_Scroll(object sender, EventArgs e)
+        {
+            glisor = 'p';
+            calcule();
+            textBox_Presiune.Text = (trackBar_Presiune.Value).ToString();
+        }
+
+        private void trackBar_Volum_Scroll(object sender, EventArgs e)
+        {
+            glisor = 'v';
+            calcule();
+            textBox_Volum.Text = (trackBar_Volum.Value).ToString();
+        }
+
+        private void trackBar_Temperatura_Scroll(object sender, EventArgs e)
+        {
+            glisor = 't';
+            calcule();
+            textBox_Temperatura.Text = (trackBar_Temperatura.Value).ToString();
+        }
+    }
+}
