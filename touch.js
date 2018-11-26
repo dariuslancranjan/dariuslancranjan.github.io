@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic version: 2018.11.26.8";
+document.getElementById("id_logic_version").innerHTML = "Logic version: 2018.11.26.10";
 var canvas = document.getElementById("id_canvas");
 canvas.addEventListener("touchstart", on_touch_start);
 canvas.addEventListener("touchmove", on_touch_move);
@@ -8,6 +8,13 @@ var canvas_bounding_rect = canvas.getBoundingClientRect();
 
 
 var last_pos_array = [];
+function get_random_color()
+{
+	var litere = '0123456789ABCDEF'
+	var s = "#";
+	for(var i = 0; i<6;i++)
+		s = s + litere[Math.floor(Math.random() * 16)];
+}
 //------------------------------------
 function on_touch_start(e)
 {
