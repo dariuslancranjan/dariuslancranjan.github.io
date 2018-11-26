@@ -14,6 +14,10 @@ function on_touch_start(e)
 	for (var i = 0; i < e.changedTouches.length; i++){
 		var context = canvas.getContext("2d");
 		context.beginPath();
+		var last_pos = {x: e.changedTouches[i].pageX,
+						y: e.changedTouches[i].pageY,
+						id: e.changedTouches[i].identifier,
+						color: get_random_color()};
 		context.arc(e.changedTouches[i].pageX - canvas_bounding_rect.left,
 					e.changedTouches[i].pageY - canvas_bounding_rect.top,
 					10,
@@ -40,13 +44,18 @@ function on_touch_move(e)
 		var context = canvas.getContext("2d");
 		context.beginPath();
 		context.lineWidth = 20;
+		context.fillStyle = last_pos_array[j].color;
+		context.strokeStyle = last_pos_array[j].color;
 		context.moveTo(last_pos_array[j].x - canvas_bounding_rect.left, last_pos_array[j].y - canvas_bounding_rect.top);
 		context.lineTo(e.changedTouches[i].pageX - canvas_bounding_rect.left,
 					e.changedTouches[i].pageY - canvas_bounding_rect.top);
 		context.stroke();
 		
+		
 		context.beginPath();
 		context.lineWidth = 1;		
+		context.fillStyle = last_pos_array[j].color;
+		context.strokeStyle = last_pos_array[j].color;
 		context.arc(e.changedTouches[i].pageX - canvas_bounding_rect.left,
 					e.changedTouches[i].pageY - canvas_bounding_rect.top,
 					10,
