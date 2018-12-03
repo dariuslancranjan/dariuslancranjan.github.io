@@ -1,0 +1,87 @@
+func calculeaza_MEDIA()->Float{
+    var media = Float(0.0)
+    for nota in note.values{
+        media += Float(nota)
+    }
+    media /= Float(note.count)
+    return media
+    }
+
+func gaseste_nota(_ materia: String)->{
+    if let note[materia]
+    return nota
+    
+}
+
+return -1
+
+}
+
+
+subscript(index: String)->Int{
+    get{
+        return gaseste_nota(index)
+    }
+    set(nota){
+        note[index] = nota
+    }
+}
+
+enum teste{
+    case constructor
+    case adauga
+    case sterge
+    case restante
+    case media
+    case gaseste
+    
+    
+}
+
+
+let test = teste.index
+
+switch
+
+
+
+    note_student.tipareste_carnet()
+
+case .restante:
+    let note_student = t_note_student()
+    note_student.adauga("citire", 5)
+    note_student.adauga("scriere", 5)
+    note_student.tipareste_restante()
+
+case .media:
+    let note_student = t_note_student()
+    note_student.adauga("citire", 5)
+    note_student.adauga("scriere", 5)
+    let media = note_student.calculeaza_media()
+    print("media = \(media)")
+    
+case.gaseste:
+    let note_student = t_note_student()
+    note_student.adauga("citire", 5)
+    note_student.adauga("scriere", 5)
+    let materie = "citire"
+    let nota = note_student.gaseste_nota(materie)
+    if nota > -1{
+        print("Nota la materia \(materie) este = \(nota)")
+    }
+    
+    else{
+        print("Nu avem nota la materia \(materie)")
+    }
+    
+    }
+    
+    
+    case .index:
+        let note_student = t_note_student()
+        note_student["citire"] = 5
+        print(note_student["citire"])
+    
+    
+    
+    
