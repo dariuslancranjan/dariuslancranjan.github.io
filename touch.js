@@ -10,8 +10,48 @@ var canvas_bounding_rect = canvas.getBoundingClientRect();
 var last_pos_array = [];
 
 //------------------------------------
+
+var chooseRed = document.getElementById("chooseRed");
+var chooseGreen = document.getElementById("chooseGreen");
+var chooseBlue = document.getElementById("chooseBlue");
+
+chooseRed.onclick = red;
+chooseGreen.onclick = green;
+chooseBlue.onclick = blue;
+
+var finalColor;
+
+function green()
+{
+    var greenColor = "#32CD32";
+    finalColor = greenColor;
+    return finalColor;
+}
+
+function red()
+{
+    var redColor = "#FF0000";
+    finalColor = redColor;
+    return finalColor;
+}
+
+function blue()
+{
+    var blueColor = "0000ff";
+    finalColor = blueColor;
+    return finalColor;
+}
+
+
+
+function chosenColor()
+{
+    
+}
+
 function get_random_color()
 {
+    
 	var litere = '0123456789ABCDEF';
 	var s = "#";
 	for (var i = 0; i < 6; i++)
@@ -27,7 +67,7 @@ function on_touch_start(e)
 		var last_pos = {x: e.changedTouches[i].pageX, 
 						y: e.changedTouches[i].pageY, 
 						id: e.changedTouches[i].identifier,
-						color: get_random_color()};
+						color: finalColor};
 		last_pos_array.push(last_pos);
 
 		context.fillStyle = last_pos_array[last_pos_array.length - 1].color;
