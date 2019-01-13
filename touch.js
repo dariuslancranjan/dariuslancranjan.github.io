@@ -37,7 +37,7 @@ function red()
 
 function blue()
 {
-    var blueColor = "0000ff";
+    var blueColor = "#0000ff";
     finalColor = blueColor;
     return finalColor;
 }
