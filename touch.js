@@ -52,7 +52,7 @@ function blue()
     return finalColor;
 }
 
-/*
+
 var canvasReset = document.getElementById("canvasReset");
 
 canvasReset.onclick = clearCanvas;
@@ -65,7 +65,7 @@ function clearCanvas()
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-*/
+
 
 
 //------------------------------------
