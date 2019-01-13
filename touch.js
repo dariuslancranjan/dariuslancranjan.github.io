@@ -14,12 +14,22 @@ var last_pos_array = [];
 var chooseRed = document.getElementById("chooseRed");
 var chooseGreen = document.getElementById("chooseGreen");
 var chooseBlue = document.getElementById("chooseBlue");
+var chooseEraser = document.getElementById("chooseEraser");
 
 chooseRed.onclick = red;
 chooseGreen.onclick = green;
 chooseBlue.onclick = blue;
+chooseEraser.onclick = eraser;
+
 
 var finalColor;
+
+function eraser()
+{
+    var eraserTool = "#fff";
+    finalColor = eraserTool;
+    return finalColor;
+}
 
 function green()
 {
