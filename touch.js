@@ -14,7 +14,7 @@ var last_pos_array = [];
 var chooseRed = document.getElementById("chooseRed");
 var chooseGreen = document.getElementById("chooseGreen");
 var chooseBlue = document.getElementById("chooseBlue");
-var chooseEraser = document.getElementById("chooseEraser");
+var chooseEraser = document.getElementById("toolEraser");
 
 chooseRed.onclick = red;
 chooseGreen.onclick = green;
@@ -26,7 +26,7 @@ var finalColor;
 
 function eraser()
 {
-    var eraserTool = "#FFFFFF";
+    var eraserTool = "#ffffff";
     finalColor = eraserTool;
     return finalColor;
 }
@@ -67,15 +67,7 @@ function clearCanvas()
 
 */
 
-function get_random_color()
-{
-    
-	var litere = '0123456789ABCDEF';
-	var s = "#";
-	for (var i = 0; i < 6; i++)
-		s = s + litere[Math.floor(Math.random() * 16)];
-	return s;
-}
+
 //------------------------------------
 function on_touch_start(e)
 {
