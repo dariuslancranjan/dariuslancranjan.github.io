@@ -1,74 +1,96 @@
-document.getElementById("id_bussiness_version").innerHTML = "Bussiness version: 2018.11.26.8";
-
+document.getElementById("id_logic_version").innerHTML = "Logic version: 2018.11.26.12";
 var canvas = document.getElementById("id_canvas");
 canvas.addEventListener("touchstart", on_touch_start);
 canvas.addEventListener("touchmove", on_touch_move);
-canvas.addEventListener("touchmove", on_touch_end);
+canvas.addEventListener("touchend", on_touch_end);
 
 var canvas_bounding_rect = canvas.getBoundingClientRect();
 
 
-var pozitii = [];
-//-------------------------------------------
+var last_pos_array = [];
+
+//------------------------------------
+function get_random_color()
+{
+	var litere = '0123456789ABCDEF';
+	var s = "#";
+	for (var i = 0; i < 6; i++)
+		s = s + litere[Math.floor(Math.random() * 16)];
+	return s;
+}
+//------------------------------------
 function on_touch_start(e)
 {
-	e.preventDefault();
-	
 	for (var i = 0; i < e.changedTouches.length; i++){
 		var context = canvas.getContext("2d");
 		context.beginPath();
-		context.arc(e.changedTouches[i].pageX - canvas_bounding_rect.left, 
+		var last_pos = {x: e.changedTouches[i].pageX, 
+						y: e.changedTouches[i].pageY, 
+						id: e.changedTouches[i].identifier,
+						color: get_random_color()};
+		last_pos_array.push(last_pos);
+
+		context.fillStyle = last_pos_array[last_pos_array.length - 1].color;
+		context.strokeStyle = last_pos_array[last_pos_array.length - 1].color;
+		
+		context.arc(e.changedTouches[i].pageX - canvas_bounding_rect.left,
 					e.changedTouches[i].pageY - canvas_bounding_rect.top,
 					10,
-					0,
-					2 * Math.PI);
+					0, 2 * Math.PI);
+		context.fill();
 		context.stroke();
-		var last_pos = {x: e.changedTouches[i].pageX, y : e.changedTouches[i].pageY, id: e.changedTouches[i].identifier};
-		pozitii.push(last_pos);		
+
 	}
 }
-//-------------------------------------------
+//------------------------------------
 function on_touch_move(e)
 {
 	e.preventDefault();
 	
 	for (var i = 0; i < e.changedTouches.length; i++){
 		var j = 0;
-		for (; j < pozitii.length; j++)
-			if (pozitii[j].id == e.changedTouches[i].identifier)
+		for (; j < last_pos_array.length; j++)
+			if (last_pos_array[j].id == e.changedTouches[i].identifier)
 				break;
-			
+		
 		var context = canvas.getContext("2d");
 		context.beginPath();
 		context.lineWidth = 20;
-		context.moveTo(pozitii[j].x - canvas_bounding_rect.left, pozitii[j].y - canvas_bounding_rect.top);
-		context.lineTo(e.changedTouches[i].pageX - canvas_bounding_rect.left, 
-						e.changedTouches[i].pageY - canvas_bounding_rect.top);
+		context.fillStyle = last_pos_array[j].color = "#ff0000";
+		context.strokeStyle = last_pos_array[j].color = "#ff0000";
+		context.moveTo(last_pos_array[j].x - canvas_bounding_rect.left, last_pos_array[j].y - canvas_bounding_rect.top);
+		context.lineTo(e.changedTouches[i].pageX - canvas_bounding_rect.left,
+					e.changedTouches[i].pageY - canvas_bounding_rect.top);
 		context.stroke();
 		
 		context.beginPath();
-		context.lineWidth = 1;
-		context.arc(e.changedTouches[i].pageX - canvas_bounding_rect.left, 
+		context.lineWidth = 1;		
+		context.fillStyle = last_pos_array[j].color;
+		context.strokeStyle = last_pos_array[j].color;
+
+		context.arc(e.changedTouches[i].pageX - canvas_bounding_rect.left,
 					e.changedTouches[i].pageY - canvas_bounding_rect.top,
 					10,
-					0,
-					2 * Math.PI);
-        context.strokeStyle="#fff"; //uhuhuhuh
-		pozitii[j].x = e.changedTouches[i].pageX;
-		pozitii[j].y = e.changedTouches[i].pageY;
+					0, 2 * Math.PI);
+		context.fill();
+		context.stroke();
+		
+		last_pos_array[j].x = e.changedTouches[i].pageX;
+		last_pos_array[j].y = e.changedTouches[i].pageY;		
 	}
+	
 }
-//-------------------------------------------
+//--------------------------------------
 function on_touch_end(e)
 {
-	e.preventDefault();
-	
 	for (var i = 0; i < e.changedTouches.length; i++){
 		var j = 0;
-		for (; j < pozitii.length; j++)
-			if (pozitii[j].id == e.changedTouches[i].identifier)
+		for (; j < last_pos_array.length; j++)
+			if (last_pos_array[j].id == e.changedTouches[i].identifier)
 				break;
-		pozitii.splice(j, 1);
+			
+		last_pos_array.splice(j, 1);
 	}
+	
 }
-//-------------------------------------------
+//--------------------------------------
