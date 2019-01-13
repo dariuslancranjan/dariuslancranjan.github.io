@@ -53,11 +53,18 @@ function blue()
 }
 
 
+var canvasReset = document.getElementById("canvasReset");
 
-function chosenColor()
+canvasReset.onclick = clearCanvas;
+
+
+function clearCanvas()
 {
-    
+    canvas = document.getElementById("id_canvas");
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
+
 
 function get_random_color()
 {
