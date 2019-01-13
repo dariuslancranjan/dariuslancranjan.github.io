@@ -56,8 +56,8 @@ function on_touch_move(e)
 		var context = canvas.getContext("2d");
 		context.beginPath();
 		context.lineWidth = 20;
-		context.fillStyle = last_pos_array[j].color = "#ff0000";
-		context.strokeStyle = last_pos_array[j].color = "#ff0000";
+		context.fillStyle = last_pos_array[j].color;
+		context.strokeStyle = last_pos_array[j].color;
 		context.moveTo(last_pos_array[j].x - canvas_bounding_rect.left, last_pos_array[j].y - canvas_bounding_rect.top);
 		context.lineTo(e.changedTouches[i].pageX - canvas_bounding_rect.left,
 					e.changedTouches[i].pageY - canvas_bounding_rect.top);
