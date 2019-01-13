@@ -26,7 +26,7 @@ var finalColor;
 
 function eraser()
 {
-    var eraserTool = "#fff";
+    var eraserTool = "#FFFFFF";
     finalColor = eraserTool;
     return finalColor;
 }
@@ -52,7 +52,7 @@ function blue()
     return finalColor;
 }
 
-
+/*
 var canvasReset = document.getElementById("canvasReset");
 
 canvasReset.onclick = clearCanvas;
@@ -65,6 +65,7 @@ function clearCanvas()
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+*/
 
 function get_random_color()
 {
