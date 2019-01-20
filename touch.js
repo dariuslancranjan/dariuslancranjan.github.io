@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic version: 2019.01.19.25";
+document.getElementById("id_logic_version").innerHTML = "Logic version: 2019.01.19.26";
 var canvas = document.getElementById("id_canvas");
 canvas.addEventListener("touchstart", on_touch_start);
 canvas.addEventListener("touchmove", on_touch_move);
@@ -18,7 +18,7 @@ var chooseGreen = document.getElementById("chooseGreen");
 var chooseBlue = document.getElementById("chooseBlue");
 var chooseEraser = document.getElementById("toolEraser");
 
-//var choosePicker = document.getElementById("colorPicker");
+var choosePicker = document.getElementById("colorPicker");
 var chooseSize = document.getElementById("myRange");
 
 chooseRed.onclick = red;
@@ -26,7 +26,7 @@ chooseGreen.onclick = green;
 chooseBlue.onclick = blue;
 chooseEraser.onclick = eraser;
 
-//choosePicker.onclick = picker;
+choosePicker.onclick = picker;
 chooseSize.onclick = sizeChange;
 
 
@@ -51,12 +51,12 @@ function pickerWheel()
 
 
 
-//function picker()
-//{  
-//   var pickerColor = document.getElementById("colorPicker").value;
-//   finalColor = pickerColor;
-//   return finalColor;
-//}
+function picker()
+{  
+  var pickerColor = document.getElementById("colorPicker").value;
+  finalColor = pickerColor;
+   return finalColor;
+}
 
 function eraser()
 {
