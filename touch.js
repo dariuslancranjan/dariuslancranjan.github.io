@@ -24,10 +24,18 @@ chooseEraser.onclick = eraser;
 choosePicker.onclick = picker;
 
 
-var pickerColor = document.getElementById("colorPicker").value;
-   
 
 var finalColor;
+
+var pickerFinal = document.getElementById("colorPicker").value;
+
+pickerFinal.onchange = pickerWheel;
+
+function pickerWheel()
+{
+    finalColor = pickerFinal;
+    return finalColor;
+}
 
 function picker()
 {  
@@ -35,8 +43,6 @@ function picker()
    finalColor = pickerColor;
    return finalColor;
 }
-
-pickerColor.onchange = finalColor;
 
 function eraser()
 {
