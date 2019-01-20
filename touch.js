@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic version: 2019.01.19.23";
+document.getElementById("id_logic_version").innerHTML = "Logic version: 2019.01.19.24";
 var canvas = document.getElementById("id_canvas");
 canvas.addEventListener("touchstart", on_touch_start);
 canvas.addEventListener("touchmove", on_touch_move);
@@ -141,7 +141,7 @@ function on_touch_move(e)
 		
 		var context = canvas.getContext("2d");
 		context.beginPath();
-		context.lineWidth = 20;
+		context.lineWidth = currentSize;
 		context.fillStyle = last_pos_array[j].color;
 		context.strokeStyle = last_pos_array[j].color;
 		context.moveTo(last_pos_array[j].x - canvas_bounding_rect.left, last_pos_array[j].y - canvas_bounding_rect.top);
