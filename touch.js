@@ -214,10 +214,7 @@ if (SUPPORTS_MEDIA_DEVICES) {
           });
         });
       });
-    });
   });
-  
-  //The light will be on as long the track exists
   
   
 }
