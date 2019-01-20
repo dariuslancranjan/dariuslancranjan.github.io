@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic version: 2019.01.19.27";
+document.getElementById("id_logic_version").innerHTML = "Logic version: 2018.11.26.12";
 var canvas = document.getElementById("id_canvas");
 canvas.addEventListener("touchstart", on_touch_start);
 canvas.addEventListener("touchmove", on_touch_move);
@@ -9,7 +9,6 @@ var canvas_bounding_rect = canvas.getBoundingClientRect();
 
 var last_pos_array = [];
 var currentSize;
-var finalColor;
 
 //------------------------------------
 
@@ -17,45 +16,25 @@ var chooseRed = document.getElementById("chooseRed");
 var chooseGreen = document.getElementById("chooseGreen");
 var chooseBlue = document.getElementById("chooseBlue");
 var chooseEraser = document.getElementById("toolEraser");
+var choosePicker = document.getElementById("readyColor");
+var chooseBucket = document.getElementById("bucket");
 
-var choosePicker = document.getElementById("colorPicker");
-var chooseSize = document.getElementById("myRange");
 
 chooseRed.onclick = red;
 chooseGreen.onclick = green;
 chooseBlue.onclick = blue;
 chooseEraser.onclick = eraser;
-
 choosePicker.onclick = picker;
-chooseSize.onclick = sizeChange;
+chooseBucket.onclick = bucketTool;
 
 
-
-function sizeChange()
-{
-    currentSize = document.getElementById("myRange").value;
-}
-
-
-var pickerFinal = document.getElementById("colorPicker").value;
-
-pickerFinal.onchange = pickerWheel;
-
-function pickerWheel()
-{
-    var pickerFinal = document.getElementById("colorPicker").value;
-    finalColor = pickerFinal;
-    return finalColor;
-}
-
-
-
+var finalColor;
 
 function picker()
-{  
-  var pickerColor = document.getElementById("colorPicker").value;
-  finalColor = pickerColor;
-   return finalColor;
+{
+    var pickerColor = document.getElementById("colorPicker").value;
+    finalColor = pickerColor;
+    return finalColor;
 }
 
 function eraser()
@@ -100,6 +79,29 @@ function clearCanvas()
 }
 
 
+function bucketTool()
+{
+    var c = document.getElementById("id_canvas");
+    var ctx = c.getContext("2d");
+
+    ctx.beginPath();
+    ctx.rect(0, 0, 400, 400);
+    ctx.fillStyle = finalColor;
+    ctx.fill();
+}
+
+
+function sizeChange()
+{
+    currentSize = document.getElementById("myRange").value;
+}
+
+
+
+
+
+
+
 
 
 //------------------------------------
@@ -127,8 +129,6 @@ function on_touch_start(e)
 	}
 }
 //------------------------------------
-
-
 function on_touch_move(e)
 {
 	e.preventDefault();
@@ -180,6 +180,8 @@ function on_touch_end(e)
 	
 }
 //--------------------------------------
+
+
 
 
 
