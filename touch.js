@@ -8,7 +8,7 @@ var canvas_bounding_rect = canvas.getBoundingClientRect();
 
 
 var last_pos_array = [];
-
+var currentSize = 20;
 //------------------------------------
 
 var chooseRed = document.getElementById("chooseRed");
@@ -22,6 +22,9 @@ chooseGreen.onclick = green;
 chooseBlue.onclick = blue;
 chooseEraser.onclick = eraser;
 choosePicker.onclick = picker;
+
+
+currentSize = document.getElementById("myRange").value;
 
 
 var finalColor;
@@ -116,6 +119,8 @@ function on_touch_start(e)
 	}
 }
 //------------------------------------
+
+
 function on_touch_move(e)
 {
 	e.preventDefault();
@@ -128,7 +133,7 @@ function on_touch_move(e)
 		
 		var context = canvas.getContext("2d");
 		context.beginPath();
-		context.lineWidth = 20;
+		context.lineWidth = currentSize;
 		context.fillStyle = last_pos_array[j].color;
 		context.strokeStyle = last_pos_array[j].color;
 		context.moveTo(last_pos_array[j].x - canvas_bounding_rect.left, last_pos_array[j].y - canvas_bounding_rect.top);
