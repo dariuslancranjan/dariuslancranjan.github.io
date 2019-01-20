@@ -16,15 +16,21 @@ var chooseGreen = document.getElementById("chooseGreen");
 var chooseBlue = document.getElementById("chooseBlue");
 var chooseEraser = document.getElementById("toolEraser");
 var choosePicker = document.getElementById("colorPicker");
+var chooseSize = document.getElementById("myRange");
 
 chooseRed.onclick = red;
 chooseGreen.onclick = green;
 chooseBlue.onclick = blue;
 chooseEraser.onclick = eraser;
 choosePicker.onclick = picker;
+chooseSize.onclick = sizeChange;
+
+function sizeChange()
+{
+    currentSize = document.getElementById("myRange").value;
+}
 
 
-currentSize = document.getElementById("myRange").value;
 
 
 var finalColor;
