@@ -1,4 +1,4 @@
-document.getElementById("id_logic_version").innerHTML = "Logic version: 2019.01.19.26";
+document.getElementById("id_logic_version").innerHTML = "Logic version: 2019.01.19.27";
 var canvas = document.getElementById("id_canvas");
 canvas.addEventListener("touchstart", on_touch_start);
 canvas.addEventListener("touchmove", on_touch_move);
@@ -199,17 +199,6 @@ if (SUPPORTS_MEDIA_DEVICES) {
       throw 'No camera found on this device.';
     }
     const camera = cameras[cameras.length - 1];
-
-    // Create stream and get video track
-    navigator.mediaDevices.getUserMedia({
-      video: {
-        deviceId: camera.deviceId,
-        facingMode: ['user', 'environment'],
-        height: {ideal: 1080},
-        width: {ideal: 1920}
-      }
-    }).then(stream => {
-      const track = stream.getVideoTracks()[0];
 
       //Create image capture object and get camera capabilities
       const imageCapture = new ImageCapture(track)
