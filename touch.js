@@ -9,20 +9,24 @@ var canvas_bounding_rect = canvas.getBoundingClientRect();
 
 var last_pos_array = [];
 var currentSize;
+var finalColor;
+
 //------------------------------------
 
 var chooseRed = document.getElementById("chooseRed");
 var chooseGreen = document.getElementById("chooseGreen");
 var chooseBlue = document.getElementById("chooseBlue");
 var chooseEraser = document.getElementById("toolEraser");
-var choosePicker = document.getElementById("colorPicker");
+
+//var choosePicker = document.getElementById("colorPicker");
 var chooseSize = document.getElementById("myRange");
 
 chooseRed.onclick = red;
 chooseGreen.onclick = green;
 chooseBlue.onclick = blue;
 chooseEraser.onclick = eraser;
-choosePicker.onclick = picker;
+
+//choosePicker.onclick = picker;
 chooseSize.onclick = sizeChange;
 
 
@@ -33,29 +37,26 @@ function sizeChange()
 }
 
 
-
-var finalColor;
-
-function picker()
-{  
-   var pickerColor = document.getElementById("colorPicker").value;
-   finalColor = pickerColor;
-   return finalColor;
-}
-
-
-
 var pickerFinal = document.getElementById("colorPicker").value;
 
 pickerFinal.onchange = pickerWheel;
 
 function pickerWheel()
 {
+    var pickerFinal = document.getElementById("colorPicker").value;
     finalColor = pickerFinal;
     return finalColor;
 }
 
 
+
+
+//function picker()
+//{  
+//   var pickerColor = document.getElementById("colorPicker").value;
+//   finalColor = pickerColor;
+//   return finalColor;
+//}
 
 function eraser()
 {
