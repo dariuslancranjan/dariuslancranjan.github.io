@@ -21,7 +21,7 @@ chooseRed.onclick = red;
 chooseGreen.onclick = green;
 chooseBlue.onclick = blue;
 chooseEraser.onclick = eraser;
-choosePicker.mouseup = picker;
+choosePicker.onmouseout = picker;
 
 
 var finalColor;
