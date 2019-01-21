@@ -185,10 +185,9 @@ function on_touch_end(e)
 
 
 
+///////////////////////////////////////
 
 
-
-//Test browser support
 const SUPPORTS_MEDIA_DEVICES = 'mediaDevices' in navigator;
 
 if (SUPPORTS_MEDIA_DEVICES) {
